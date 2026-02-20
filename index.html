@@ -1,16 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Acesso Alternativo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Acadêmico</title>
     <style>
-        body { margin: 0; padding: 0; overflow: hidden; }
-        iframe { width: 100vw; height: 100vh; border: none; }
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #5865F2; /* Cor do Discord */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #4752c4;
+        }
+        p { color: #666; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <!-- Tenta carregar via CroxyProxy direto no frame -->
-    <iframe src="https://www.croxyproxy.com"></iframe>
+<div class="container">
+    <h2>Acesso ao Portal</h2>
+    <p>Clique no botão abaixo para abrir a aplicação.</p>
+    <!-- Botão que executa o script de camuflagem -->
+    <button onclick="abrirDiscord()">Abrir App</button>
+</div>
+
+<script>
+function abrirDiscord() {
+    // Cria uma nova aba em branco (about:blank)
+    var win = window.open();
+    win.document.title = "Google Docs"; // Muda o nome da aba para disfarçar
+    
+    // Define a URL do proxy (estou usando o BlockAway que é excelente para escolas)
+    var proxyUrl = "https://www.blockaway.net";
+
+    // Cria o iframe que vai ocupar a tela inteira da nova aba
+    var iframe = win.document.createElement('iframe');
+    iframe.style.position = "fixed";
+    iframe.style.top = "0";
+    iframe.style.left = "0";
+    iframe.style.bottom = "0";
+    iframe.style.right = "0";
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "none";
+    iframe.style.margin = "0";
+    iframe.style.padding = "0";
+    iframe.style.overflow = "hidden";
+    iframe.style.zIndex = "999999";
+    
+    // Define a fonte do iframe para o proxy
+    iframe.src = proxyUrl;
+
+    // Adiciona o iframe na aba em branco
+    win.document.body.style.margin = "0";
+    win.document.body.appendChild(iframe);
+}
+</script>
 
 </body>
 </html>
